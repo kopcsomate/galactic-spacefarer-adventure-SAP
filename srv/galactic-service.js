@@ -20,14 +20,24 @@ import {
     startMission,
 } from "./lib/missions.js";
 
+const { SELECT } = cds.ql;
+
 export default class GalacticSpacefarerService extends cds.ApplicationService {
     async init() {
+        
         const { Spacefarers } = this.entities;
 
         const db = await cds.connect.to("db");
 
         this.before("CREATE", Spacefarers, (req) => {
             const data = req.data;
+
+            if (!userCanAccessPlanet(req, data.originPlanet_ID)) {
+                return req.reject(
+                    403,
+                    "You can only create Spacefarers for your own planet."
+                );
+            }
 
             validateProgressionValues(req, data);
 
@@ -116,6 +126,11 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
             });
         });
 
+        const {
+            Spacefarers: DbSpacefarers,
+            SpacefarerMissions: DbSpacefarerMissions,
+        } = cds.entities("galactic.spacefarer");
+
         this.on("startMission", async (req) => {
             const {
                 spacefarerId,
@@ -126,6 +141,26 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
                 return req.reject(
                     400,
                     "Spacefarer ID and Mission ID are required."
+                );
+            }
+
+            const spacefarer = await db.run(
+                SELECT.one
+                    .from(DbSpacefarers)
+                    .where({ ID: spacefarerId })
+            );
+
+            if (!spacefarer) {
+                return req.reject(
+                    404,
+                    "Spacefarer not found."
+                );
+            }
+
+            if (!userCanAccessPlanet(req, spacefarer.originPlanet_ID)) {
+                return req.reject(
+                    403,
+                    "You can only start missions for Spacefarers from your own planet."
                 );
             }
 
@@ -148,13 +183,44 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
                 );
             }
 
+            const spacefarerMission = await db.run(
+                SELECT.one
+                    .from(DbSpacefarerMissions)
+                    .where({ ID: spacefarerMissionId })
+            );
+
+            if (!spacefarerMission) {
+                return req.reject(
+                    404,
+                    "Spacefarer mission not found."
+                );
+            }
+
+            const spacefarer = await db.run(
+                SELECT.one
+                    .from(DbSpacefarers)
+                    .where({ ID: spacefarerMission.spacefarer_ID })
+            );
+
+            if (!spacefarer) {
+                return req.reject(
+                    404,
+                    "Spacefarer not found."
+                );
+            }
+
+            if (!userCanAccessPlanet(req, spacefarer.originPlanet_ID)) {
+                return req.reject(
+                    403,
+                    "You can only claim mission rewards for Spacefarers from your own planet."
+                );
+            }
+
             const updatedSpacefarer = await claimMissionReward({
                 db,
                 spacefarerMissionId,
             });
 
-            // A reward megváltoztathatta az XP-t és a skillt,
-            // ezért újraértékeljük az achievementeket.
             await evaluateAchievements({
                 db,
                 spacefarerId: updatedSpacefarer.ID,
@@ -181,4 +247,10 @@ function validateProgressionValues(req, data) {
     ) {
         req.reject(400, "Wormhole Navigation XP cannot be negative.");
     }
+}
+
+function userCanAccessPlanet(req, planetId) {
+    const allowedPlanets = req.user.attr.planet ?? [];
+
+    return allowedPlanets.includes(planetId);
 }

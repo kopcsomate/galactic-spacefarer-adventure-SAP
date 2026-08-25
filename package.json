@@ -11,5 +11,49 @@
   "scripts": {
     "start": "cds-serve"
   },
+  "cds": {
+    "requires": {
+      "auth": {
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "x-manager": {
+              "password": "x-manager",
+              "roles": [
+                "SpacefarerManager"
+              ],
+              "attr": {
+                "planet": [
+                  "10000000-0000-0000-0000-000000000003"
+                ]
+              }
+            },
+            "y-manager": {
+              "password": "y-manager",
+              "roles": [
+                "SpacefarerManager"
+              ],
+              "attr": {
+                "planet": [
+                  "10000000-0000-0000-0000-000000000004"
+                ]
+              }
+            },
+            "x-viewer": {
+              "password": "x-viewer",
+              "roles": [
+                "SpacefarerViewer"
+              ],
+              "attr": {
+                "planet": [
+                  "10000000-0000-0000-0000-000000000003"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "private": true
 }
