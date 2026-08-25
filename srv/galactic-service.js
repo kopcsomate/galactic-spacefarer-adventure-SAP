@@ -5,9 +5,21 @@ import {
     calculateStardustStatus,
 } from "./lib/progression.js";
 
+import {
+    ACHIEVEMENT_CODES,
+    evaluateAchievements,
+    unlockAchievement,
+} from "./lib/achievements.js";
+
+import {
+    sendWelcomeNotification,
+} from "./lib/notification.js";
+
 export default class GalacticSpacefarerService extends cds.ApplicationService {
     async init() {
         const { Spacefarers } = this.entities;
+
+        const db = await cds.connect.to("db");
 
         this.before("CREATE", Spacefarers, (req) => {
             const data = req.data;
@@ -42,6 +54,61 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
                     data.wormholeNavigationXp
                 );
             }
+        });
+
+        this.after("UPDATE", Spacefarers, async (_results, req) => {
+            const spacefarerId = req.data.ID;
+
+            if (!spacefarerId) {
+                return;
+            }
+
+            await evaluateAchievements({
+                db,
+                spacefarerId,
+            });
+        });
+
+        this.after("CREATE", Spacefarers, async (results, req) => {
+            // CAP 10-ben a CREATE eredménye egy array-szerű objektum.
+            // Iterálással kapjuk meg a létrehozott rekord generált kulcsát.
+            const [createdSpacefarer] = [...results];
+
+            if (!createdSpacefarer?.ID) {
+                throw new Error("Created Spacefarer ID could not be determined.");
+            }
+
+            // A First Launch achievement ugyanahhoz a tranzakcióhoz tartozik,
+            // mint a Spacefarer létrehozása.
+            await unlockAchievement({
+                db,
+                spacefarerId: createdSpacefarer.ID,
+                code: ACHIEVEMENT_CODES.FIRST_LAUNCH,
+            });
+
+            await evaluateAchievements({
+                db,
+                spacefarerId: createdSpacefarer.ID,
+            });
+
+            // A request adatai tartalmazzák a létrehozott Spacefarer mezőit,
+            // a generált ID-t pedig a CREATE eredményéből vesszük.
+            const spacefarer = {
+                ...req.data,
+                ID: createdSpacefarer.ID,
+            };
+
+            // Külső side effectet csak a sikeres commit után végzünk.
+            req.on("succeeded", async () => {
+                try {
+                    await sendWelcomeNotification(spacefarer);
+                } catch (error) {
+                    console.error(
+                        "[Notification] Failed to send welcome email:",
+                        error
+                    );
+                }
+            });
         });
 
         await super.init();
