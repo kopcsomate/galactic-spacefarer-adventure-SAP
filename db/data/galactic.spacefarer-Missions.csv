@@ -1,0 +1,6 @@
+ID,code,title,description,durationSeconds,navigationXpReward,displayOrder
+50000000-0000-0000-0000-000000000001,NEBULA_ROUTE_SURVEY,Nebula Route Survey,Survey a newly discovered route through a dense nebula,10,50,1
+50000000-0000-0000-0000-000000000002,ASTEROID_NAVIGATION,Asteroid Field Navigation,Navigate safely through a rapidly moving asteroid field,20,100,2
+50000000-0000-0000-0000-000000000003,WORMHOLE_CALIBRATION,Wormhole Calibration,Calibrate navigation systems for stable wormhole travel,30,150,3
+50000000-0000-0000-0000-000000000004,DEEP_SPACE_EXPEDITION,Deep Space Expedition,Lead an expedition beyond established galactic routes,45,250,4
+50000000-0000-0000-0000-000000000005,INTERGALACTIC_SUPPLY_RUN,Intergalactic Supply Run,Coordinate a critical supply run across multiple galactic sectors,60,300,5

@@ -1,0 +1,11 @@
+ID,code,title,description,displayOrder
+40000000-0000-0000-0000-000000000001,FIRST_LAUNCH,First Launch,Successfully joined the Galactic Spacefarer Adventure,1
+40000000-0000-0000-0000-000000000002,STARDUST_COLLECTOR,Stardust Collector,Reached at least 250 units of Stardust,2
+40000000-0000-0000-0000-000000000003,GALACTIC_ELITE,Galactic Elite,Reached at least 1000 units of Stardust,3
+40000000-0000-0000-0000-000000000004,WORMHOLE_ROOKIE,Wormhole Rookie,Earned at least 100 Wormhole Navigation XP,4
+40000000-0000-0000-0000-000000000005,WORMHOLE_MASTER,Wormhole Master,Earned at least 1000 Wormhole Navigation XP,5
+40000000-0000-0000-0000-000000000006,FIRST_MISSION,First Mission,Successfully completed the first galactic mission,6
+40000000-0000-0000-0000-000000000007,VETERAN_EXPLORER,Veteran Explorer,Successfully completed five galactic missions,7
+40000000-0000-0000-0000-000000000008,MISSION_SPECIALIST,Mission Specialist,Completed at least three different mission types,8
+40000000-0000-0000-0000-000000000009,COSMIC_VETERAN,Cosmic Veteran,Reached 500 Stardust and Wormhole Navigation Skill 75,9
+40000000-0000-0000-0000-000000000010,ALDI_ASTRONAUT,ALDI Astronaut,Unlocked every other Galactic Spacefarer achievement,10
