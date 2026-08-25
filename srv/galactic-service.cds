@@ -19,7 +19,18 @@ service GalacticSpacefarerService {
     @readonly
     entity Missions as projection on db.Missions;
 
+    @readonly
     entity SpacefarerAchievements as projection on db.SpacefarerAchievements;
 
+    @readonly
     entity SpacefarerMissions as projection on db.SpacefarerMissions;
+    
+    action startMission(
+        spacefarerId : UUID,
+        missionId    : UUID
+    ) returns SpacefarerMissions;
+
+    action claimMissionReward(
+        spacefarerMissionId : UUID
+    ) returns Spacefarers;
 }

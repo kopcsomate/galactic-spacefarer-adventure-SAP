@@ -65,6 +65,8 @@ export async function evaluateAchievements({
 }) {
     const {
         Spacefarers,
+        SpacefarerMissions,
+        SpacefarerAchievements,
     } = cds.entities("galactic.spacefarer");
 
     const spacefarer = await db.run(
@@ -76,6 +78,21 @@ export async function evaluateAchievements({
     if (!spacefarer) {
         throw new Error(`Spacefarer not found: ${spacefarerId}`);
     }
+
+    const completedMissions = await db.run(
+        SELECT.from(SpacefarerMissions)
+            .columns(
+                "mission_ID",
+                "rewardClaimedAt"
+            )
+            .where({
+                spacefarer_ID: spacefarerId,
+            })
+    );
+
+    const claimedMissions = completedMissions.filter(
+        (mission) => mission.rewardClaimedAt !== null
+    );
 
     const achievementsToUnlock = [];
 
@@ -112,11 +129,50 @@ export async function evaluateAchievements({
         );
     }
 
+    if (claimedMissions.length >= 1) {
+        achievementsToUnlock.push(
+            ACHIEVEMENT_CODES.FIRST_MISSION
+        );
+    }
+
+    if (claimedMissions.length >= 5) {
+        achievementsToUnlock.push(
+            ACHIEVEMENT_CODES.VETERAN_EXPLORER
+        );
+    }
+
+    const distinctMissionIds = new Set(
+        claimedMissions.map(
+            (mission) => mission.mission_ID
+        )
+    );
+
+    if (distinctMissionIds.size >= 3) {
+        achievementsToUnlock.push(
+            ACHIEVEMENT_CODES.MISSION_SPECIALIST
+        );
+    }
+
     for (const code of achievementsToUnlock) {
         await unlockAchievement({
             db,
             spacefarerId,
             code,
+        });
+    }
+    const unlockedAchievements = await db.run(
+        SELECT.from(SpacefarerAchievements)
+            .columns("achievement_ID")
+            .where({
+                spacefarer_ID: spacefarerId,
+            })
+    );
+
+    if (unlockedAchievements.length >= 9) {
+        await unlockAchievement({
+            db,
+            spacefarerId,
+            code: ACHIEVEMENT_CODES.ALDI_ASTRONAUT,
         });
     }
 }

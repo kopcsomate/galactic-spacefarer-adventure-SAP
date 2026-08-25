@@ -15,6 +15,11 @@ import {
     sendWelcomeNotification,
 } from "./lib/notification.js";
 
+import {
+    claimMissionReward,
+    startMission,
+} from "./lib/missions.js";
+
 export default class GalacticSpacefarerService extends cds.ApplicationService {
     async init() {
         const { Spacefarers } = this.entities;
@@ -109,6 +114,53 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
                     );
                 }
             });
+        });
+
+        this.on("startMission", async (req) => {
+            const {
+                spacefarerId,
+                missionId,
+            } = req.data;
+
+            if (!spacefarerId || !missionId) {
+                return req.reject(
+                    400,
+                    "Spacefarer ID and Mission ID are required."
+                );
+            }
+
+            return startMission({
+                db,
+                spacefarerId,
+                missionId,
+            });
+        });
+
+        this.on("claimMissionReward", async (req) => {
+            const {
+                spacefarerMissionId,
+            } = req.data;
+
+            if (!spacefarerMissionId) {
+                return req.reject(
+                    400,
+                    "Spacefarer Mission ID is required."
+                );
+            }
+
+            const updatedSpacefarer = await claimMissionReward({
+                db,
+                spacefarerMissionId,
+            });
+
+            // A reward megváltoztathatta az XP-t és a skillt,
+            // ezért újraértékeljük az achievementeket.
+            await evaluateAchievements({
+                db,
+                spacefarerId: updatedSpacefarer.ID,
+            });
+
+            return updatedSpacefarer;
         });
 
         await super.init();
