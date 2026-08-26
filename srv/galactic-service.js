@@ -34,6 +34,11 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
 
         const db = await cds.connect.to("db");
 
+        const {
+            Spacefarers: DbSpacefarers,
+            SpacefarerMissions: DbSpacefarerMissions,
+        } = cds.entities("galactic.spacefarer");
+
         this.before("CREATE", Spacefarers, (req) => {
             const data = req.data;
 
@@ -203,11 +208,6 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
                 }
             });
         });
-
-        const {
-            Spacefarers: DbSpacefarers,
-            SpacefarerMissions: DbSpacefarerMissions,
-        } = cds.entities("galactic.spacefarer");
 
         this.on("startMission", async (req) => {
             const {

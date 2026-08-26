@@ -109,17 +109,56 @@ annotate service.Spacefarers with @(
             {
                 $Type: 'UI.DataField',
                 Value: originPlanet.name,
-                Label: 'Origin Planet'
+                Label: 'Origin Planet',
+                ![@UI.Hidden]: {
+                    $edmJson: {
+                        $Not: [
+                            { $Path: 'IsActiveEntity' }
+                        ]
+                    }
+                }
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: originPlanet_ID,
+                Label: 'Origin Planet',
+                ![@UI.Hidden]: IsActiveEntity
             },
             {
                 $Type: 'UI.DataField',
                 Value: department.name,
-                Label: 'Department'
+                Label: 'Department',
+                ![@UI.Hidden]: {
+                    $edmJson: {
+                        $Not: [
+                            { $Path: 'IsActiveEntity' }
+                        ]
+                    }
+                }
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: department_ID,
+                Label: 'Department',
+                ![@UI.Hidden]: IsActiveEntity
             },
             {
                 $Type: 'UI.DataField',
                 Value: position.title,
-                Label: 'Position'
+                Label: 'Position',
+                ![@UI.Hidden]: {
+                    $edmJson: {
+                        $Not: [
+                            { $Path: 'IsActiveEntity' }
+                        ]
+                    }
+                }
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: position_ID,
+                Label: 'Position',
+                ![@UI.Hidden]: IsActiveEntity
             },
             {
                 $Type: 'UI.DataField',
@@ -216,20 +255,6 @@ annotate service.SpacefarerMissions with @(
     ]
 );
 
-annotate service.Planets with {
-    ID   @title: 'Planet';
-    name @title: 'Planet Name';
-};
-
-annotate service.Departments with {
-    ID   @title: 'Department';
-    name @title: 'Department Name';
-};
-
-annotate service.Positions with {
-    ID    @title: 'Position';
-    title @title: 'Position Title';
-};
 
 annotate service.Spacefarers with {
     firstName          @title: 'First Name';
@@ -237,20 +262,17 @@ annotate service.Spacefarers with {
     email              @title: 'Email';
     originPlanet_ID @(
         title: 'Origin Planet',
-        Common.Text: originPlanet.name,
-        UI.TextArrangement: #TextOnly
+        Common.Text: originPlanet.name
     );
 
     department_ID @(
         title: 'Department',
-        Common.Text: department.name,
-        UI.TextArrangement: #TextOnly
+        Common.Text: department.name
     );
 
     position_ID @(
         title: 'Position',
-        Common.Text: position.title,
-        UI.TextArrangement: #TextOnly
+        Common.Text: position.title
     );
     stardustCollection @title: 'Stardust';
     stardustStatus     @title: 'Stardust Status';
