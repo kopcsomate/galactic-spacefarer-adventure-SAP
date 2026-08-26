@@ -1,0 +1,1704 @@
+:root {
+    --space-deep: #03152f;
+    --space-navy: #06295c;
+    --space-blue: #0050aa;
+    --space-bright: #0874e8;
+
+    --aldi-yellow: #ffd500;
+    --aldi-orange: #f47c20;
+
+    --page-bg: #eaf3fc;
+    --card-bg: #ffffff;
+
+    --text-main: #102a43;
+    --text-muted: #526d82;
+
+    --border: #c7dcef;
+}
+
+/* =========================================================
+   GLOBAL PAGE
+   ========================================================= */
+
+.sapUiBody {
+    background:
+        radial-gradient(
+            circle at 90% 5%,
+            rgba(0, 103, 217, 0.15),
+            transparent 26rem
+        ),
+        radial-gradient(
+            circle at 10% 45%,
+            rgba(41, 151, 255, 0.08),
+            transparent 28rem
+        ),
+        linear-gradient(
+            180deg,
+            #eaf4ff 0%,
+            #f5f9fd 45%,
+            #e8f2fb 100%
+        ) !important;
+}
+
+
+/* =========================================================
+   OBJECT PAGE BACKGROUND
+   ========================================================= */
+
+.sapUxAPObjectPageWrapper,
+.sapUxAPObjectPageContainer,
+.sapUxAPObjectPageScroll {
+    background:
+        radial-gradient(
+            circle at 88% 15%,
+            rgba(0, 103, 217, 0.12),
+            transparent 30rem
+        ),
+        linear-gradient(
+            180deg,
+            #e7f2fd 0%,
+            #f4f8fc 50%,
+            #e8f2fb 100%
+        ) !important;
+}
+
+
+/* =========================================================
+   OBJECT PAGE HEADER
+   ========================================================= */
+
+.sapUxAPObjectPageHeaderTitle,
+.sapUxAPObjectPageHeaderIdentifier,
+.sapUxAPObjectPageHeaderIdentifierContainer {
+    background:
+        radial-gradient(
+            circle at 76% 5%,
+            rgba(30, 125, 255, 0.55),
+            transparent 24rem
+        ),
+        linear-gradient(
+            110deg,
+            #021128 0%,
+            #063979 48%,
+            #031a3c 100%
+        ) !important;
+}
+
+
+/* Spacefarer name */
+
+.sapUxAPObjectPageHeaderTitle .sapMTitle,
+.sapUxAPObjectPageHeaderIdentifierTitle,
+.sapUxAPObjectPageHeaderIdentifierTitle .sapMText {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* Last name / subtitle */
+
+.sapUxAPObjectPageHeaderIdentifierDescription,
+.sapUxAPObjectPageHeaderIdentifierDescription .sapMText {
+    color: #cfe5fa !important;
+}
+
+
+/* ALDI-style bottom accent */
+
+.sapUxAPObjectPageHeaderTitle {
+    border-bottom:
+        3px solid var(--aldi-yellow) !important;
+}
+
+
+/* =========================================================
+   ANCHOR / TAB BAR
+   ========================================================= */
+
+.sapUxAPAnchorBar {
+    background:
+        linear-gradient(
+            90deg,
+            #031a3c,
+            #06295c
+        ) !important;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12) !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 28, 65, 0.18) !important;
+}
+
+
+.sapUxAPAnchorBar .sapMBtnContent {
+    color: #dbeeff !important;
+}
+
+
+.sapUxAPAnchorBarButtonSelected .sapMBtnContent {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+
+.sapUxAPAnchorBarButtonSelected {
+    border-bottom:
+        3px solid var(--aldi-yellow) !important;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.sapUxAPObjectPageSectionTitle,
+.sapUxAPObjectPageSubSectionHeaderTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMTitle {
+    color: var(--space-deep) !important;
+    font-weight: 800 !important;
+}
+
+
+/* subtle yellow accent */
+
+.sapUxAPObjectPageSectionHeader {
+    border-left:
+        4px solid var(--aldi-yellow) !important;
+}
+
+
+/* =========================================================
+   CONTENT CARDS
+   ========================================================= */
+
+.sapUxAPBlockContainer {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbff 100%
+        ) !important;
+
+    border:
+        1px solid rgba(0, 80, 170, 0.13) !important;
+
+    border-radius:
+        14px !important;
+
+    box-shadow:
+        0 5px 18px rgba(0, 48, 105, 0.10) !important;
+}
+
+
+/* IMPORTANT:
+   card text stays dark and readable
+*/
+
+.sapUxAPBlockContainer .sapMText,
+.sapUxAPBlockContainer .sapMObjectNumberText,
+.sapUxAPBlockContainer .sapMObjectNumberUnit {
+    color: var(--text-main) !important;
+}
+
+
+.sapUxAPBlockContainer .sapMLabel {
+    color: var(--text-muted) !important;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.sapMListTbl {
+    background: #ffffff !important;
+}
+
+
+/* blue table header */
+
+.sapMListTblHeaderCell {
+    background:
+        linear-gradient(
+            180deg,
+            #eaf4fd 0%,
+            #dcecf9 100%
+        ) !important;
+
+    border-bottom:
+        2px solid rgba(0, 80, 170, 0.25) !important;
+}
+
+
+.sapMListTblHeaderCell .sapMLabel {
+    color: #063b70 !important;
+    font-weight: 700 !important;
+}
+
+
+/* normal readable rows */
+
+.sapMListTblRow {
+    background: #ffffff !important;
+}
+
+
+.sapMListTblRow:nth-child(even) {
+    background: #f8fbfe !important;
+}
+
+
+.sapMListTblRow:hover {
+    background: #edf6ff !important;
+}
+
+
+.sapMListTblRow .sapMText {
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   TABLE TOOLBARS
+   ========================================================= */
+
+.sapMTB {
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #f4f9fe
+        ) !important;
+
+    border-color:
+        rgba(0, 80, 170, 0.15) !important;
+}
+
+
+.sapMTB .sapMTitle {
+    color: var(--space-deep) !important;
+}
+
+
+/* =========================================================
+   INPUTS / FILTER BAR
+   ========================================================= */
+
+.sapMInputBaseContentWrapper,
+.sapMSFF {
+    background: #ffffff !important;
+
+    border-color:
+        #9cbcd7 !important;
+
+    border-radius:
+        7px !important;
+}
+
+
+.sapMInputBaseInner,
+.sapMSFI {
+    color: var(--text-main) !important;
+}
+
+
+.sapMInputBaseContentWrapper:focus-within,
+.sapMSFF:focus-within {
+    border-color:
+        var(--space-bright) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 103, 217, 0.18) !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.sapMBtnEmphasized .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #0874e8,
+            #0050aa
+        ) !important;
+
+    border-color:
+        #0050aa !important;
+
+    box-shadow:
+        0 2px 7px rgba(0, 80, 170, 0.24) !important;
+}
+
+
+.sapMBtnEmphasized:hover .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #096bd0,
+            #003e85
+        ) !important;
+}
+
+
+/* standard actions */
+
+.sapMBtnTransparent .sapMBtnContent,
+.sapMBtnTransparent .sapUiIcon {
+    color: var(--space-blue) !important;
+}
+
+
+/* Start Mission gets the ALDI orange/yellow character */
+
+.sapUxAPObjectPageSubSectionHeader
+.sapMBtnTransparent
+.sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffad24,
+            var(--aldi-orange)
+        ) !important;
+
+    border:
+        1px solid #db7000 !important;
+
+    border-radius:
+        6px !important;
+}
+
+
+.sapUxAPObjectPageSubSectionHeader
+.sapMBtnTransparent
+.sapMBtnContent {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   LINKS / ICONS
+   ========================================================= */
+
+.sapMLnk {
+    color: var(--space-blue) !important;
+}
+
+
+.sapMLnk:hover {
+    color: var(--aldi-orange) !important;
+}
+
+
+.sapUiIcon {
+    color: var(--space-blue);
+}
+
+
+/* =========================================================
+   EMPTY STATES
+   ========================================================= */
+
+.sapMListNoData .sapMText {
+    color: var(--text-muted) !important;
+}
+
+
+/* =========================================================
+   SELECTED ROW
+   ========================================================= */
+
+.sapMLIBSelected,
+.sapMListTblRow.sapMLIBSelected {
+    background:
+        #dceeff !important;
+}
+
+
+/* =========================================================
+   VALUE HELP / DIALOG
+   ========================================================= */
+
+.sapMDialog,
+.sapMDialogSection {
+    background:
+        #f5f9fd !important;
+}
+
+
+.sapMDialog .sapMTitle {
+    color: var(--space-deep) !important;
+}
+
+
+/* =========================================================
+   GENERAL LABELS
+   ========================================================= */
+
+.sapMLabel {
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   FINAL GALACTIC POLISH
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. OBJECT PAGE HERO HEADER
+   --------------------------------------------------------- */
+
+/* Fiori verziótól függően több wrapper is részt vesz a headerben */
+.sapUxAPObjectPageHeaderTitle,
+.sapUxAPObjectPageHeaderIdentifier,
+.sapUxAPObjectPageHeaderIdentifierContainer,
+.sapUxAPObjectPageHeaderDetails {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(18, 119, 255, 0.55) 0,
+            transparent 24rem
+        ),
+        radial-gradient(
+            circle at 55% 0%,
+            rgba(63, 185, 255, 0.20) 0,
+            transparent 13rem
+        ),
+        linear-gradient(
+            110deg,
+            #020b1e 0%,
+            #052d68 50%,
+            #031832 100%
+        ) !important;
+}
+
+
+/* A név MINDEN lehetséges header title variációban legyen olvasható */
+.sapUxAPObjectPageHeaderTitle .sapMTitle,
+.sapUxAPObjectPageHeaderIdentifier .sapMTitle,
+.sapUxAPObjectPageHeaderIdentifierTitle,
+.sapUxAPObjectPageHeaderIdentifierTitle .sapMText,
+.sapUxAPObjectPageHeaderTitle .sapMText {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* Subtitle / last name */
+.sapUxAPObjectPageHeaderIdentifierDescription,
+.sapUxAPObjectPageHeaderIdentifierDescription .sapMText,
+.sapUxAPObjectPageHeaderTitle .sapMObjectAttributeText {
+    color: #bcdcff !important;
+}
+
+
+/* ALDI-inspired double accent */
+.sapUxAPObjectPageHeaderTitle {
+    border-bottom: 0 !important;
+
+    box-shadow:
+        inset 0 -3px 0 #ffd500,
+        inset 0 -6px 0 #f47c20,
+        0 5px 18px rgba(0, 35, 75, 0.22) !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. SECTION HEADERS – több karakter
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader {
+    background:
+        linear-gradient(
+            90deg,
+            #041b3d 0%,
+            #07366f 72%,
+            #052957 100%
+        ) !important;
+
+    border-left:
+        5px solid #ffd500 !important;
+
+    border-bottom:
+        2px solid rgba(35, 155, 255, 0.35) !important;
+
+    border-radius:
+        9px 9px 0 0 !important;
+
+    box-shadow:
+        0 3px 10px rgba(0, 43, 94, 0.14) !important;
+}
+
+
+/* Section címek fehérek */
+.sapUxAPObjectPageSubSectionHeaderTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMText {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   3. START MISSION – legyen igazi CTA
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnTransparent .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffb52b 0%,
+            #f47c20 100%
+        ) !important;
+
+    border:
+        1px solid #d96800 !important;
+
+    border-radius:
+        7px !important;
+
+    box-shadow:
+        0 2px 8px rgba(244, 124, 32, 0.35) !important;
+}
+
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnTransparent .sapMBtnContent,
+.sapUxAPObjectPageSubSectionHeader .sapMBtnTransparent .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   4. CONTENT CARDS – kevésbé generic
+   --------------------------------------------------------- */
+
+.sapUxAPBlockContainer {
+    background:
+        radial-gradient(
+            circle at 96% 8%,
+            rgba(0, 103, 217, 0.055),
+            transparent 15rem
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7fbff 100%
+        ) !important;
+
+    border:
+        1px solid rgba(0, 80, 170, 0.20) !important;
+
+    border-bottom:
+        3px solid rgba(0, 103, 217, 0.25) !important;
+
+    box-shadow:
+        0 7px 22px rgba(0, 43, 90, 0.10) !important;
+}
+
+
+/* ---------------------------------------------------------
+   5. PROGRESS VALUES – kicsit dashboardosabb
+   --------------------------------------------------------- */
+
+.sapUxAPBlockContainer .sapMText {
+    line-height: 1.35;
+}
+
+
+/* label */
+.sapUxAPBlockContainer .sapMLabel {
+    color: #47657f !important;
+}
+
+
+/* ---------------------------------------------------------
+   6. TABLE HEADERS – erősebb ALDI blue
+   --------------------------------------------------------- */
+
+.sapMListTblHeaderCell {
+    background:
+        linear-gradient(
+            180deg,
+            #0870d1 0%,
+            #0050aa 100%
+        ) !important;
+
+    border-bottom:
+        2px solid #ffd500 !important;
+}
+
+
+.sapMListTblHeaderCell .sapMLabel {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   7. TABLE CONTAINERS
+   --------------------------------------------------------- */
+
+.sapMList {
+    border:
+        1px solid rgba(0, 80, 170, 0.16) !important;
+
+    border-radius:
+        0 0 10px 10px !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 45, 90, 0.07) !important;
+}
+
+
+/* ---------------------------------------------------------
+   8. TABLE TOOLBAR – világos helyett galaktikus fejléc
+   --------------------------------------------------------- */
+
+.sapMList .sapMTB {
+    background:
+        linear-gradient(
+            90deg,
+            #041b3d,
+            #07366f
+        ) !important;
+}
+
+
+.sapMList .sapMTB .sapMTitle {
+    color: #ffffff !important;
+}
+
+
+.sapMList .sapMTB .sapUiIcon,
+.sapMList .sapMTB .sapMBtnContent {
+    color: #5fc5ff !important;
+}
+
+
+/* Search viszont maradjon olvasható */
+.sapMList .sapMTB .sapMSFF {
+    background: #ffffff !important;
+}
+
+
+/* ---------------------------------------------------------
+   9. ANCHOR BAR / NAV
+   --------------------------------------------------------- */
+
+.sapUxAPAnchorBar {
+    background:
+        linear-gradient(
+            90deg,
+            #020d21,
+            #052b62
+        ) !important;
+}
+
+
+.sapUxAPAnchorBar .sapMBtnContent {
+    color: #cce5fa !important;
+}
+
+
+.sapUxAPAnchorBarButtonSelected .sapMBtnContent {
+    color: #ffffff !important;
+}
+
+
+.sapUxAPAnchorBarButtonSelected {
+    border-bottom:
+        4px solid #ffd500 !important;
+}
+
+
+/* ---------------------------------------------------------
+   10. GALACTIC PAGE BACKGROUND
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageWrapper,
+.sapUxAPObjectPageContainer,
+.sapUxAPObjectPageScroll {
+    background:
+        radial-gradient(
+            circle at 8% 18%,
+            rgba(0, 105, 220, 0.14),
+            transparent 26rem
+        ),
+        radial-gradient(
+            circle at 87% 30%,
+            rgba(24, 156, 255, 0.12),
+            transparent 32rem
+        ),
+        radial-gradient(
+            circle at 60% 82%,
+            rgba(255, 213, 0, 0.035),
+            transparent 20rem
+        ),
+        linear-gradient(
+            135deg,
+            #dfeefa 0%,
+            #f3f8fd 48%,
+            #dfedfa 100%
+        ) !important;
+}
+
+
+/* ---------------------------------------------------------
+   11. LIST REPORT – ne legyen annyira steril
+   --------------------------------------------------------- */
+
+.sapUiBody {
+    background:
+        radial-gradient(
+            circle at 92% 5%,
+            rgba(0, 103, 217, 0.12),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 8% 85%,
+            rgba(244, 124, 32, 0.045),
+            transparent 22rem
+        ),
+        linear-gradient(
+            135deg,
+            #e7f2fb,
+            #f7fafc
+        ) !important;
+}
+
+/* =========================================================
+   ALDI COLOR CORRECTION
+   ========================================================= */
+
+:root {
+    --aldi-navy: #002b49;
+    --aldi-blue: #0050aa;
+    --aldi-orange: #f47c20;
+    --aldi-yellow: #ffd500;
+    --aldi-warm-orange: #ff9d1e;
+}
+
+
+/* ---------------------------------------------------------
+   TABLE HEADER: less Lidl-blue, more ALDI
+   --------------------------------------------------------- */
+
+.sapMListTblHeaderCell {
+    background:
+        linear-gradient(
+            180deg,
+            #073863 0%,
+            #002b49 100%
+        ) !important;
+
+    border-bottom:
+        3px solid var(--aldi-orange) !important;
+}
+
+
+.sapMListTblHeaderCell .sapMLabel {
+    color: #ffffff !important;
+}
+
+
+/* Orange separator between header cells */
+
+.sapMListTblHeaderCell {
+    border-right:
+        1px solid rgba(244, 124, 32, 0.55) !important;
+}
+
+
+/* ---------------------------------------------------------
+   TABLE TOOLBAR
+   --------------------------------------------------------- */
+
+.sapMList .sapMTB {
+    background:
+        linear-gradient(
+            90deg,
+            #001d35 0%,
+            #003f73 100%
+        ) !important;
+
+    border-bottom:
+        2px solid var(--aldi-orange) !important;
+}
+
+
+/* little yellow/orange highlight on table title */
+
+.sapMList .sapMTB .sapMTitle {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   LIST ROW HOVER
+   --------------------------------------------------------- */
+
+.sapMListTblRow:hover {
+    background:
+        #fff5e9 !important;
+}
+
+
+/* selected row */
+.sapMLIBSelected,
+.sapMListTblRow.sapMLIBSelected {
+    background:
+        #ffead3 !important;
+}
+
+
+/* ---------------------------------------------------------
+   PRIMARY BUTTONS
+   --------------------------------------------------------- */
+
+.sapMBtnEmphasized .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ff9d1e 0%,
+            #f47c20 100%
+        ) !important;
+
+    border-color:
+        #d76900 !important;
+
+    box-shadow:
+        0 2px 9px rgba(244, 124, 32, 0.35) !important;
+}
+
+
+.sapMBtnEmphasized:hover .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffb13b 0%,
+            #e96e00 100%
+        ) !important;
+}
+
+
+/* ---------------------------------------------------------
+   START MISSION – FORCE VISIBLE
+   --------------------------------------------------------- */
+
+/*
+   Fiori renders the action inside a transparent button.
+   Target action buttons in Object Page section toolbars.
+*/
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtn,
+.sapUxAPObjectPageSubSectionHeader .sapMBtnTransparent {
+    opacity: 1 !important;
+}
+
+
+/* button shell */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffb52b 0%,
+            #f47c20 100%
+        ) !important;
+
+    border:
+        1px solid #d96800 !important;
+
+    border-radius:
+        7px !important;
+
+    box-shadow:
+        0 3px 10px rgba(244, 124, 32, 0.38) !important;
+
+    min-height:
+        2rem !important;
+}
+
+
+/* button text */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnContent {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* button icon */
+
+.sapUxAPObjectPageSubSectionHeader .sapUiIcon {
+    color: #ffffff !important;
+}
+
+
+/* hover */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtn:hover .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffc34f 0%,
+            #ee7203 100%
+        ) !important;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION HEADER ACCENTS
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader {
+    border-left:
+        5px solid var(--aldi-orange) !important;
+
+    border-bottom:
+        2px solid var(--aldi-yellow) !important;
+}
+
+
+/* ---------------------------------------------------------
+   TAB BAR ACCENT
+   --------------------------------------------------------- */
+
+.sapUxAPAnchorBarButtonSelected {
+    border-bottom:
+        4px solid var(--aldi-orange) !important;
+}
+
+
+/* ---------------------------------------------------------
+   CARDS
+   --------------------------------------------------------- */
+
+.sapUxAPBlockContainer {
+    border-top:
+        2px solid rgba(244, 124, 32, 0.25) !important;
+
+    border-bottom:
+        3px solid rgba(0, 80, 170, 0.25) !important;
+}
+
+
+/* ---------------------------------------------------------
+   LINKS / ACTIONS
+   --------------------------------------------------------- */
+
+.sapMLnk:hover,
+.sapMBtnTransparent:hover .sapMBtnContent {
+    color:
+        var(--aldi-orange) !important;
+}
+
+/* =========================================================
+   FINAL FIXES + GALAXY BACKGROUND
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. REAL GALACTIC PAGE BACKGROUND
+   --------------------------------------------------------- */
+
+.sapUiBody,
+.sapFDynamicPage,
+.sapFDynamicPageContent,
+.sapFDynamicPageContentWrapper,
+.sapUxAPObjectPageWrapper,
+.sapUxAPObjectPageContainer,
+.sapUxAPObjectPageScroll {
+    background-color: #03152f !important;
+
+    background-image:
+        /* bright stars */
+        radial-gradient(circle at 8% 15%,  rgba(255,255,255,0.95) 0 1px, transparent 2px),
+        radial-gradient(circle at 18% 65%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
+        radial-gradient(circle at 32% 30%, rgba(94,190,255,0.85) 0 1px, transparent 2px),
+        radial-gradient(circle at 47% 78%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
+        radial-gradient(circle at 64% 18%, rgba(255,213,0,0.70) 0 1px, transparent 2px),
+        radial-gradient(circle at 78% 52%, rgba(255,255,255,0.90) 0 1px, transparent 2px),
+        radial-gradient(circle at 91% 25%, rgba(72,181,255,0.95) 0 1px, transparent 2px),
+
+        /* nebula */
+        radial-gradient(
+            ellipse at 83% 20%,
+            rgba(0, 117, 255, 0.28) 0%,
+            rgba(0, 90, 200, 0.12) 25%,
+            transparent 55%
+        ),
+
+        radial-gradient(
+            ellipse at 15% 75%,
+            rgba(244, 124, 32, 0.10) 0%,
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020817 0%,
+            #041a3b 42%,
+            #06295c 72%,
+            #021026 100%
+        ) !important;
+
+    background-attachment: fixed !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. OBJECT PAGE HERO HEADER
+   make the actual Fiori wrappers dark
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageHeaderTitle,
+.sapUxAPObjectPageHeaderTitle > div,
+.sapUxAPObjectPageHeaderIdentifier,
+.sapUxAPObjectPageHeaderIdentifierContainer {
+    background:
+        radial-gradient(
+            ellipse at 75% 10%,
+            rgba(0, 118, 255, 0.50),
+            transparent 30%
+        ),
+        linear-gradient(
+            105deg,
+            #020b1e 0%,
+            #052d68 55%,
+            #02152f 100%
+        ) !important;
+}
+
+
+/* First name + all header text */
+.sapUxAPObjectPageHeaderTitle .sapMTitle,
+.sapUxAPObjectPageHeaderTitle .sapMText,
+.sapUxAPObjectPageHeaderIdentifier .sapMTitle,
+.sapUxAPObjectPageHeaderIdentifier .sapMText,
+.sapUxAPObjectPageHeaderIdentifierTitle,
+.sapUxAPObjectPageHeaderIdentifierTitle .sapMText {
+    color: #ffffff !important;
+}
+
+
+/* Main title specifically */
+.sapUxAPObjectPageHeaderIdentifierTitle,
+.sapUxAPObjectPageHeaderTitle .sapMTitle {
+    font-weight: 800 !important;
+}
+
+
+/* subtitle */
+.sapUxAPObjectPageHeaderIdentifierDescription,
+.sapUxAPObjectPageHeaderIdentifierDescription .sapMText {
+    color: #b9d9f7 !important;
+}
+
+
+/* ALDI-style double accent */
+.sapUxAPObjectPageHeaderTitle {
+    box-shadow:
+        inset 0 -3px 0 #f47c20,
+        inset 0 -6px 0 #ffd500,
+        0 6px 20px rgba(0,0,0,0.25) !important;
+}
+
+
+/* ---------------------------------------------------------
+   3. REMOVE DARK BLUE SIDE OVERFLOW
+   from General / Progress headers
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.98),
+            rgba(242,248,255,0.98)
+        ) !important;
+
+    border-left:
+        5px solid #f47c20 !important;
+
+    border-bottom:
+        2px solid #ffd500 !important;
+
+    border-radius:
+        8px 8px 0 0 !important;
+
+    box-shadow:
+        0 3px 12px rgba(0,35,75,0.10) !important;
+}
+
+
+/* titles become dark again */
+.sapUxAPObjectPageSubSectionHeaderTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMText {
+    color: #062b50 !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   4. START MISSION stays a strong orange CTA
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffae28,
+            #f47c20
+        ) !important;
+
+    border:
+        1px solid #d86900 !important;
+
+    border-radius:
+        7px !important;
+
+    box-shadow:
+        0 3px 10px rgba(244,124,32,0.35) !important;
+}
+
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnContent,
+.sapUxAPObjectPageSubSectionHeader .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   5. CARDS FLOAT ABOVE THE GALAXY
+   --------------------------------------------------------- */
+
+.sapUxAPBlockContainer {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.98),
+            rgba(244,249,255,0.98)
+        ) !important;
+
+    border:
+        1px solid rgba(65,160,255,0.28) !important;
+
+    border-top:
+        2px solid rgba(244,124,32,0.45) !important;
+
+    border-bottom:
+        3px solid rgba(0,80,170,0.35) !important;
+
+    box-shadow:
+        0 8px 24px rgba(0,13,40,0.24),
+        0 0 18px rgba(40,145,255,0.08) !important;
+}
+
+
+/* ---------------------------------------------------------
+   6. LIST/TABLE CARDS FLOAT ABOVE GALAXY TOO
+   --------------------------------------------------------- */
+
+.sapMList {
+    background: rgba(255,255,255,0.98) !important;
+
+    box-shadow:
+        0 7px 22px rgba(0,15,45,0.22) !important;
+}
+
+
+/* List Report main table container */
+.sapFDynamicPageContent .sapMList {
+    border:
+        1px solid rgba(244,124,32,0.30) !important;
+
+    border-radius:
+        12px !important;
+}
+
+
+/* ---------------------------------------------------------
+   7. FILTER AREA
+   keep readable, but no giant pure-white block
+   --------------------------------------------------------- */
+
+.sapFDynamicPageHeader {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239,247,255,0.97),
+            rgba(255,255,255,0.97)
+        ) !important;
+
+    border-bottom:
+        2px solid rgba(244,124,32,0.35) !important;
+
+    box-shadow:
+        0 4px 16px rgba(0,20,55,0.15) !important;
+}
+
+/* =========================================================
+   OBJECT PAGE FINAL LAYOUT FIXES
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. HEADER: remove the giant white empty area
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageHeaderTitle,
+.sapUxAPObjectPageHeaderIdentifier,
+.sapUxAPObjectPageHeaderIdentifierContainer,
+.sapUxAPObjectPageHeaderTitle > div {
+    background:
+        radial-gradient(
+            ellipse at 75% 15%,
+            rgba(0, 112, 255, 0.45),
+            transparent 32%
+        ),
+        linear-gradient(
+            105deg,
+            #020b1e 0%,
+            #052d68 55%,
+            #02152f 100%
+        ) !important;
+}
+
+/* Prevent inner wrapper from falling back to white */
+.sapUxAPObjectPageHeaderTitle .sapFDynamicPageTitle,
+.sapUxAPObjectPageHeaderTitle .sapFDynamicPageTitleMain,
+.sapUxAPObjectPageHeaderTitle .sapFDynamicPageTitleMainInner,
+.sapUxAPObjectPageHeaderTitle .sapFDynamicPageTitleMainContent {
+    background: transparent !important;
+}
+
+/* Header text */
+.sapUxAPObjectPageHeaderTitle .sapMTitle,
+.sapUxAPObjectPageHeaderTitle .sapMText,
+.sapUxAPObjectPageHeaderIdentifier .sapMTitle,
+.sapUxAPObjectPageHeaderIdentifier .sapMText {
+    color: #ffffff !important;
+}
+
+/* subtitle */
+.sapUxAPObjectPageHeaderIdentifierDescription,
+.sapUxAPObjectPageHeaderIdentifierDescription .sapMText {
+    color: #bcdcff !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. GENERAL / PROGRESS HEADER STRIPS
+   remove huge white overflow
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/*
+   Style only the actual title/action toolbar,
+   not the entire subsection width.
+*/
+.sapUxAPObjectPageSubSectionHeader .sapMTB,
+.sapUxAPObjectPageSubSectionHeaderToolbar {
+    background:
+        linear-gradient(
+            90deg,
+            #f9fcff 0%,
+            #eef6fd 100%
+        ) !important;
+
+    border-left:
+        5px solid #f47c20 !important;
+
+    border-bottom:
+        2px solid #ffd500 !important;
+
+    border-radius:
+        8px !important;
+
+    box-shadow:
+        0 3px 12px rgba(0, 35, 75, 0.10) !important;
+}
+
+/* title */
+.sapUxAPObjectPageSubSectionHeader .sapMTitle,
+.sapUxAPObjectPageSubSectionHeaderTitle {
+    color: #062b50 !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   3. START MISSION
+   keep it strong after header cleanup
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffae28,
+            #f47c20
+        ) !important;
+
+    border:
+        1px solid #d86900 !important;
+
+    border-radius:
+        7px !important;
+
+    box-shadow:
+        0 3px 10px rgba(244, 124, 32, 0.35) !important;
+}
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnContent,
+.sapUxAPObjectPageSubSectionHeader .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------------------
+   4. Give Object Page sections slightly more breathing room
+   without huge whitespace
+   --------------------------------------------------------- */
+
+.sapUxAPObjectPageSubSection {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+}
+
+
+/* ---------------------------------------------------------
+   5. Keep cards visually separate from galaxy background
+   --------------------------------------------------------- */
+
+.sapUxAPBlockContainer {
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 8px 24px rgba(0, 15, 45, 0.22),
+        0 0 18px rgba(40, 145, 255, 0.08) !important;
+}
+
+/* =========================================================
+   UNIFIED OBJECT PAGE SECTION HEADERS
+   ========================================================= */
+
+/* General Information + Spacefaring Progress */
+.sapUxAPObjectPageSubSectionHeader,
+.sapUxAPObjectPageSubSectionHeader .sapMTB,
+.sapUxAPObjectPageSubSectionHeaderToolbar {
+    background:
+        linear-gradient(
+            90deg,
+            #002b49 0%,
+            #003f73 100%
+        ) !important;
+
+    border-left:
+        0 !important;
+
+    border-top:
+        1px solid rgba(255,255,255,0.10) !important;
+
+    border-bottom:
+        2px solid #f47c20 !important;
+
+    border-radius:
+        10px 10px 0 0 !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 20, 50, 0.18) !important;
+}
+
+
+/* General / Progress title */
+.sapUxAPObjectPageSubSectionHeaderTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMText {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* Achievements + Missions toolbar – same exact style */
+.sapMList .sapMTB {
+    background:
+        linear-gradient(
+            90deg,
+            #002b49 0%,
+            #003f73 100%
+        ) !important;
+
+    border-top:
+        1px solid rgba(255,255,255,0.10) !important;
+
+    border-bottom:
+        2px solid #f47c20 !important;
+
+    border-radius:
+        10px 10px 0 0 !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 20, 50, 0.18) !important;
+}
+
+
+/* all section titles */
+.sapMList .sapMTB .sapMTitle {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   START MISSION stays orange on dark header
+   ========================================================= */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffae28 0%,
+            #f47c20 100%
+        ) !important;
+
+    border:
+        1px solid #d86900 !important;
+
+    border-radius:
+        7px !important;
+
+    box-shadow:
+        0 3px 10px rgba(244, 124, 32, 0.38) !important;
+}
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnContent,
+.sapUxAPObjectPageSubSectionHeader .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   Orange detail line under all table column headers
+   ========================================================= */
+
+.sapMListTblHeaderCell {
+    background:
+        linear-gradient(
+            180deg,
+            #073863 0%,
+            #002b49 100%
+        ) !important;
+
+    border-bottom:
+        2px solid #f47c20 !important;
+}
+
+/* =========================================================
+   FIX SUBSECTION HEADER OVERFLOW
+   ========================================================= */
+
+/*
+   General Information + Spacefaring Progress header
+   ugyanúgy legyen beljebb húzva, mint a content cardok.
+*/
+.sapUxAPObjectPageSubSectionHeader {
+    width: auto !important;
+    margin-left: 1.75rem !important;
+    margin-right: 1.75rem !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #002b49 0%,
+            #003f73 100%
+        ) !important;
+
+    border-bottom: 2px solid #f47c20 !important;
+    border-radius: 10px 10px 0 0 !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 20, 50, 0.18) !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* Kis képernyőn ne legyen túl nagy oldalsó margó */
+@media (max-width: 900px) {
+    .sapUxAPObjectPageSubSectionHeader {
+        margin-left: 0.75rem !important;
+        margin-right: 0.75rem !important;
+    }
+}
+
+/* =========================================================
+   FINAL HEADER CLEANUP
+   ========================================================= */
+
+/* 
+   General Information + Spacefaring Progress:
+   csak a KÜLSŐ header kapjon formát,
+   a belső toolbar ne rajzoljon még egy második kártyát.
+*/
+.sapUxAPObjectPageSubSectionHeader {
+    background:
+        linear-gradient(
+            90deg,
+            #002b49 0%,
+            #003f73 100%
+        ) !important;
+
+    border: 0 !important;
+    border-bottom: 2px solid #f47c20 !important;
+
+    border-radius: 10px 10px 0 0 !important;
+
+    box-shadow:
+        0 4px 14px rgba(0, 20, 50, 0.18) !important;
+}
+
+
+/* A belső toolbar teljesen transparent legyen */
+.sapUxAPObjectPageSubSectionHeader .sapMTB,
+.sapUxAPObjectPageSubSectionHeaderToolbar {
+    background: transparent !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* General / Progress cím */
+.sapUxAPObjectPageSubSectionHeaderTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMTitle,
+.sapUxAPObjectPageSubSectionHeader .sapMText {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT / MISSION COUNTER COLOR
+   ========================================================= */
+
+/* A cím melletti darabszám is legyen világos */
+.sapMList .sapMTB .sapMText,
+.sapMList .sapMTB .sapMObjectNumberText,
+.sapMList .sapMTB .sapMObjectNumberUnit {
+    color: #ffffff !important;
+}
+
+
+/* Ha a Fiori sima title belső spanben rendereli */
+.sapMList .sapMTB .sapMTitle,
+.sapMList .sapMTB .sapMTitle span {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   START MISSION maradjon hangsúlyos
+   ========================================================= */
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnInner {
+    background:
+        linear-gradient(
+            180deg,
+            #ffae28 0%,
+            #f47c20 100%
+        ) !important;
+
+    border: 1px solid #d86900 !important;
+
+    border-radius: 7px !important;
+
+    box-shadow:
+        0 3px 10px rgba(244, 124, 32, 0.38) !important;
+}
+
+.sapUxAPObjectPageSubSectionHeader .sapMBtnContent,
+.sapUxAPObjectPageSubSectionHeader .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+/* =========================================================
+   FINAL TABLE POLISH
+   ========================================================= */
+
+/* 1. Achievements / Missions számláló legyen világos */
+.sapMList .sapMTB .sapMTitle,
+.sapMList .sapMTB .sapMTitle * {
+    color: #ffffff !important;
+}
+
+/* Fiori néha külön text/span elemben rendereli a darabszámot */
+.sapMList .sapMTB span,
+.sapMList .sapMTB .sapMText {
+    color: #ffffff !important;
+}
+
+/* Ha linkként / objektum státuszként renderelődik */
+.sapMList .sapMTB .sapMLnk,
+.sapMList .sapMTB .sapMObjectStatusText,
+.sapMList .sapMTB .sapMObjectNumberText {
+    color: #ffffff !important;
+}
+
+
+/* 2. Table container ne legyen lekerekítve a fejléc alatt */
+.sapMList {
+    border-radius: 0 0 10px 10px !important;
+}
+
+/* A table-toolbar a panel teteje */
+.sapMList .sapMTB {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Maga a table ne kapjon újabb lekerekítést */
+.sapMListTbl,
+.sapMListTblHeader,
+.sapMListTblHeaderCell {
+    border-radius: 0 !important;
+}
+
+
+/* 3. Ne legyen rés / dupla border a toolbar és table között */
+.sapMList .sapMTB {
+    margin-bottom: 0 !important;
+}
+
+.sapMListTbl {
+    border-top: 0 !important;
+}
+
+
+/* 4. Az egész panel egyetlen egységnek hasson */
+.sapMList {
+    overflow: hidden !important;
+
+    border:
+        1px solid rgba(244, 124, 32, 0.45) !important;
+
+    box-shadow:
+        0 8px 22px rgba(0, 15, 45, 0.22) !important;
+}
