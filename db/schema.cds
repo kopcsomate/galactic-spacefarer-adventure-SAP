@@ -7,18 +7,21 @@ using {
 
 // A bolygók törzsadatai.
 // Ezekre a Spacefarer entitás később associationnel fog hivatkozni.
+@cds.odata.valuelist
 entity Planets : cuid, managed {
     name   : String(100) not null;
     galaxy : String(100);
 }
 
 // A szervezeti egységek törzsadatai.
+@cds.odata.valuelist
 entity Departments : cuid, managed {
     name        : String(100) not null;
     description : String(500);
 }
 
 // A Spacefarerek által betölthető pozíciók.
+@cds.odata.valuelist
 entity Positions : cuid, managed {
     title : String(100) not null;
     level : Integer;

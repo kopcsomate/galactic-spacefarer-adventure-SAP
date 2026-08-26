@@ -25,7 +25,12 @@ const { SELECT } = cds.ql;
 export default class GalacticSpacefarerService extends cds.ApplicationService {
     async init() {
         
-        const { Spacefarers } = this.entities;
+        const {
+            Spacefarers,
+            SpacefarerMissions,
+            SpacefarerAchievements,
+            Achievements,
+        } = this.entities;
 
         const db = await cds.connect.to("db");
 
@@ -49,6 +54,79 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
             data.wormholeNavigationSkill = calculateNavigationSkill(
                 data.wormholeNavigationXp ?? 0
             );
+        });
+
+        this.after("READ", Spacefarers, async (results) => {
+            const spacefarers = Array.isArray(results)
+                ? results
+                : [results];
+
+            for (const spacefarer of spacefarers) {
+                if (!spacefarer?.ID) {
+                    continue;
+                }
+
+
+                const unlockedAchievements = await SELECT.from(
+                    SpacefarerAchievements
+                )
+                    .columns("ID")
+                    .where({
+                        spacefarer_ID: spacefarer.ID
+                    });
+
+                spacefarer.achievementCount = unlockedAchievements.length;
+
+                const allAchievements = await SELECT.from(
+                    Achievements
+                ).columns("ID");
+
+                spacefarer.achievementTotal = allAchievements.length;
+                spacefarer.achievementProgress = `${spacefarer.achievementCount} / ${spacefarer.achievementTotal}`;
+            }
+        });
+
+        this.after("READ", SpacefarerMissions, async (results) => {
+            const missions = Array.isArray(results)
+                ? results
+                : [results];
+
+            for (const mission of missions) {
+                if (!mission?.ID) {
+                    continue;
+                }
+
+                const persistedMission = await db.run(
+                    SELECT.one
+                        .from(DbSpacefarerMissions)
+                        .columns(
+                            "completesAt",
+                            "rewardClaimedAt"
+                        )
+                        .where({
+                            ID: mission.ID,
+                        })
+                );
+
+                if (!persistedMission) {
+                    continue;
+                }
+
+                if (persistedMission.rewardClaimedAt) {
+                    mission.missionStatus = "Completed";
+                    continue;
+                }
+
+                if (
+                    persistedMission.completesAt &&
+                    new Date(persistedMission.completesAt) <= new Date()
+                ) {
+                    mission.missionStatus = "Ready to Claim";
+                    continue;
+                }
+
+                mission.missionStatus = "In Progress";
+            }
         });
 
         this.before("UPDATE", Spacefarers, (req) => {
@@ -171,10 +249,107 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
             });
         });
 
+        this.on("startMissionForSpacefarer", Spacefarers, async (req) => {
+            const spacefarerId = req.params?.[0]?.ID;
+            const { missionId } = req.data;
+
+            if (!spacefarerId || !missionId) {
+                return req.reject(
+                    400,
+                    "Spacefarer ID and Mission ID are required."
+                );
+            }
+
+            const spacefarer = await db.run(
+                SELECT.one
+                    .from(DbSpacefarers)
+                    .where({ ID: spacefarerId })
+            );
+
+            if (!spacefarer) {
+                return req.reject(
+                    404,
+                    "Spacefarer not found."
+                );
+            }
+
+            if (!userCanAccessPlanet(req, spacefarer.originPlanet_ID)) {
+                return req.reject(
+                    403,
+                    "You can only start missions for Spacefarers from your own planet."
+                );
+            }
+
+            return startMission({
+                db,
+                spacefarerId,
+                missionId,
+            });
+        });
+
         this.on("claimMissionReward", async (req) => {
             const {
                 spacefarerMissionId,
             } = req.data;
+
+            if (!spacefarerMissionId) {
+                return req.reject(
+                    400,
+                    "Spacefarer Mission ID is required."
+                );
+            }
+
+            const spacefarerMission = await db.run(
+                SELECT.one
+                    .from(DbSpacefarerMissions)
+                    .where({ ID: spacefarerMissionId })
+            );
+
+            if (!spacefarerMission) {
+                return req.reject(
+                    404,
+                    "Spacefarer mission not found."
+                );
+            }
+
+            const spacefarer = await db.run(
+                SELECT.one
+                    .from(DbSpacefarers)
+                    .where({ ID: spacefarerMission.spacefarer_ID })
+            );
+
+            if (!spacefarer) {
+                return req.reject(
+                    404,
+                    "Spacefarer not found."
+                );
+            }
+
+            if (!userCanAccessPlanet(req, spacefarer.originPlanet_ID)) {
+                return req.reject(
+                    403,
+                    "You can only claim mission rewards for Spacefarers from your own planet."
+                );
+            }
+
+            const updatedSpacefarer = await claimMissionReward({
+                db,
+                spacefarerMissionId,
+            });
+
+            await evaluateAchievements({
+                db,
+                spacefarerId: updatedSpacefarer.ID,
+            });
+
+            return updatedSpacefarer;
+        });
+
+        this.on("claimReward", SpacefarerMissions, async (req) => {
+            // Compositionön keresztüli bound actionnél több context paraméter is lehet.
+            // Nekünk a legbelső, vagyis a konkrét SpacefarerMission kulcsa kell.
+            const missionParams = req.params?.[req.params.length - 1];
+            const spacefarerMissionId = missionParams?.ID;
 
             if (!spacefarerMissionId) {
                 return req.reject(
