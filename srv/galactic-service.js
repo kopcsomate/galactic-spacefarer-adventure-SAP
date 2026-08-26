@@ -137,10 +137,19 @@ export default class GalacticSpacefarerService extends cds.ApplicationService {
         this.before("UPDATE", Spacefarers, (req) => {
             const data = req.data;
 
+            // A manager csak a saját bolygójához rendelhet Spacefarert.
+            if (
+                data.originPlanet_ID !== undefined &&
+                !userCanAccessPlanet(req, data.originPlanet_ID)
+            ) {
+                return req.reject(
+                    403,
+                    "You can only assign Spacefarers to your own planet."
+                );
+            }
+
             validateProgressionValues(req, data);
 
-            // PATCH esetén csak akkor számoljuk újra a derived mezőt,
-            // ha az alapjául szolgáló érték ténylegesen változik.
             if (data.stardustCollection !== undefined) {
                 data.stardustStatus = calculateStardustStatus(
                     data.stardustCollection
