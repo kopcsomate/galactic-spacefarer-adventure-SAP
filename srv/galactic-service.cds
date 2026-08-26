@@ -128,7 +128,8 @@ service GalacticSpacefarerService {
                 'in/rewardClaimedAt',
                 'in/missionStatus',
                 'in/spacefarer/wormholeNavigationXp',
-                'in/spacefarer/wormholeNavigationSkill'
+                'in/spacefarer/wormholeNavigationSkill',
+                'in/spacefarer/achievementProgress'
             ],
             TargetEntities: [
                 'in/spacefarer/achievements'
