@@ -198,7 +198,7 @@ Expected result:
 
 This verifies that planet-level authorization is enforced by the CAP backend and not only by the Fiori UI.
 
-##Other information
+## Other Information
 
 ### Achievements
 
