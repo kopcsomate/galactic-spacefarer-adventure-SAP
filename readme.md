@@ -15,7 +15,7 @@ A full-stack SAP CAP application with an SAP Fiori Elements frontend for managin
 
 Galactic Spacefarer Adventure is a small space-themed management application built with SAP CAP and Fiori Elements.
 
-Users can manage Spacefarers belonging to their assigned planet, while the backend handles authorization, progression, achievements and missions.
+Managers can manage Spacefarers belonging to their assigned planet, while Viewers have read-only access. The backend handles authorization, progression, achievements and missions.
 
 The application uses a standard CAP architecture:
 
